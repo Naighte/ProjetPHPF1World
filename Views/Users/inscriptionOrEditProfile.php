@@ -24,6 +24,7 @@
             </div>
             <div>
                 <button name="btnEnvoi" class="btn btn-primary" value="Envoi">Envoyer</button>
+                <?php if (isset($_SESSION['user'])) : ?><a href="deleteProfil" class="btn btn-secondary">Supprimer le profil</a><?php endif ?>
             </div>
         </fieldset>
     </form>

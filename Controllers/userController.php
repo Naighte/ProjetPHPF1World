@@ -44,12 +44,26 @@ require_once("Views/base.php");
         }
 
 
-
 elseif ($uri ==="/profil") {
-    
+    var_dump($_SESSION);
+    if(isset($_POST['btnEnvoi'])){
+        $messageError = verifEmptyData();
+        if(!$messageError){
+            updateUser($pdo);
+            updateSession($pdo);
+            header('location:/profil');
+        }
+    }
     $title = "Mise à jour du profil";
     $template = "Views/Users/inscriptionOrEditProfile.php";
     require_once("Views/base.php");
+}
+
+elseif ($uri === "/deleteProfil") {
+    //deleteOptionTeamFromUser($pdo);
+    //deleteAllTeamsFromUser($pdo);
+    deleteUser($pdo);
+    header("location:/deconnexion");
 }
  
 elseif ($uri === "/déconnexion") {

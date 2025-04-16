@@ -43,3 +43,52 @@ function connectUser($pdo)
         die($message);
     }
 }
+
+function updateUser($pdo)
+{
+    try {
+        $query = 'update userinfos set UserNom = :UserNom, UserPrenom = :UserPrenom, UserMDP = :UserMDP, UserEmail = :UserEmail where UserID = :UserID';
+        $ajouteUser = $pdo->prepare($query);
+        $ajouteUser->execute([
+            'UserNom' => $_POST["nom"],
+            'UserPrenom' => $_POST["prenom"],
+            'UserMDP' => $_POST["mot_de_passe"],
+            'UserEmail' => $_POST["email"],
+            'UserID' => $_SESSION["user"]->UserID
+        ]);
+        var_dump("fzef");
+    } catch (PDOEXCEPTION $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+
+function updateSession($pdo)
+{
+    try {
+        $query = 'select * from userinfos where UserID = :UserID';
+        $selectUser = $pdo->prepare($query);
+        $selectUser->execute([
+            'UserID' => $_SESSION["user"]->UserID
+        ]);
+        $user = $selectUser->fetch();
+        $_SESSION["user"] = $user;
+    } catch (PDOException $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+
+function DeleteUser($pdo)
+{
+    try {
+        $query = 'delete from userinfos where UserID = :UserID';
+        $delUser = $pdo->prepare($query);
+        $delUser->execute([
+            'UserID' => $_SESSION["user"]->UserID
+        ]);
+    } catch (PDOException $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+}

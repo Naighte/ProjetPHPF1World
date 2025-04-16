@@ -14,3 +14,8 @@ function selectAllF1($pdo)
     }
 
 }
+
+//function deleteOptionsTeamFromUser($dbh) (voir étape 5)
+
+
+//function deleteAllTeamsFromUser($pdo) (voir étape 5)
