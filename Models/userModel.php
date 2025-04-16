@@ -2,16 +2,16 @@
 function createUser($pdo)
 {
     try {
-        $query = 'insert into utilisateurs(nomUser, prenomUser, loginUser, passWordUser, emailUser, role)
-         values (:nomUser, :prenomUser, :loginUser, :passWordUser, :emailUser, :role)';
+        $query = 'insert into userinfos(UserNom, UserPrenom, UserLogin, UserMDP, UserEmail, UserRole)
+         values (:UserNom, :UserPrenom, :UserLogin, :UserMDP, :UserEmail, :UserRole)';
         $ajouteUser = $pdo->prepare($query);
         $ajouteUser->execute([
-            'nomUser' => $_POST["nom"],
-            'prenomUser' => $_POST["prenom"],
-            'loginUser' => $_POST["login"],
-            'passWordUser' => $_POST["mot_de_passe"],
-            'emailUser' => $_POST["email"],
-            'role' => 'user'
+            'UserNom' => $_POST["nom"],
+            'UserPrenom' => $_POST["prenom"],
+            'UserLogin' => $_POST["login"],
+            'UserMDP' => $_POST["mot_de_passe"],
+            'UserEmail' => $_POST["email"],
+            'UserRole' => 'user'
             ]);   
 
     }   catch (PDOException $e) {
@@ -24,11 +24,11 @@ function connectUser($pdo)
 {
     try {
         var_dump("coucou");
-        $query = 'select * from utilisateurs where loginUser = :loginUser and passWordUser = :passWordUser';
+        $query = 'select * from userinfos where UserLogin = :UserLogin and UserMDP = :UserMDP';
         $connectUser = $pdo->prepare($query);
         $connectUser->execute([
-            'loginUser'  => $_POST["login"],
-            'passWordUser'  => $_POST["mot_de_passe"]
+            'UserLogin'  => $_POST["login"],
+            'UserMDP'  => $_POST["mot_de_passe"]
         ]);
         $user = $connectUser->fetch();
         if (!$user){

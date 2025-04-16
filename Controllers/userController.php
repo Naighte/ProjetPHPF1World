@@ -32,7 +32,7 @@ elseif ($uri ==="/inscription") {
         $messageError = verifEmptyData();
     
         if(!$messageError){
-            createUser($pdo);
+            createUser($pdo); 
             header('location:/connexion');
             }
         }

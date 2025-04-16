@@ -5,7 +5,7 @@ fieldset{
 
 .btn {
     width: 100px;
-    border-radius: 70%;
+    border-radius: 25%;
     cursor: pointer;
     padding: 3px;
     display: block;
@@ -18,15 +18,15 @@ fieldset{
     color: rgb(255, 255, 255);
     border: 1px solid rgb(0, 0, 0);
 }
-Ò
+
 .btn-primary {
-    background-color: rgb(24, 61, 61);
+    background-color: rgb(255, 0, 0);
     color: rgb(255, 255, 255);
     border: 1px solid white;
 }
 
 .btn-secondary {
-    background-color:rgb(34, 34, 34);
+    background-color:rgb(20, 20, 20);
     color: white;
     border: 1px solid rgb(255, 0, 0);
     text-align: center;
