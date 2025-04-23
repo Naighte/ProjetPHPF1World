@@ -60,8 +60,7 @@ elseif ($uri ==="/profil") {
 }
 
 elseif ($uri === "/deleteProfil") {
-    //deleteOptionTeamFromUser($pdo);
-    //deleteAllTeamsFromUser($pdo);
+    deleteAllTeamsFromUser($pdo);
     deleteUser($pdo);
     header("location:/deconnexion");
 }
