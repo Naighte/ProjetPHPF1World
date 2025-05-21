@@ -25,7 +25,7 @@ elseif ($uri === "/createTeam"){
 }
 
 elseif (isset($_GET["TeamID"]) && $uri === "/voirEcurie?TeamID=" . $_GET["TeamID"]) {
-
+    
     $F1 = selectOneF1($pdo);
     $title = "Ajout d'une écurie";
     $template = "Views/F1/voirEcurie.php";

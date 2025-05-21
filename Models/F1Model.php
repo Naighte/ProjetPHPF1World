@@ -117,3 +117,19 @@ function deleteOneF1($pdo)
         die($message);
     }
 }
+
+function selectComments($com)
+{
+    try{
+        $query = 'select * from commentateur where CommLangueID = :CommLangueID';
+        $selectCom = $com->prepare($query);
+        $selectCom->execute([
+            'CommLangueID' => $_GET["CommLangueID"]
+        ]);
+        $com = $selectCom->fetch();
+        return $com;
+    } catch (PDOException $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+}

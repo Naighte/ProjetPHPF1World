@@ -5,9 +5,11 @@
 <?php endif ?>
 
 <?php if (isset($_SESSION["user"])) : ?>
-    <a href="createTeam">Ajouter une écurie</a>
+    <a href="../Views/F1/editOrCreateF1.php">Ajouter une écurie</a>
 <?php endif ?>
         
+<a href="../Views/F1/commentateurs.php">Liste des commentateurs</a>
+
 <div class="flexible wrap space-around">
     <?php foreach($F1 as $F1) : ?>
     <div class="border card">
@@ -17,7 +19,7 @@
             <div class="center">
                 <p><span>QG de l'écurie : <?= $F1->TeamLocaQG ?></span>  </p>
                 <h3>Première année de l'écurie : <?= $F1->TeamAnneeArriver?></h3>
-                <a href="voirEcurie.php?TeamID=<?=$F1->TeamID ?>" class="btn btn-page">Voir l'écurie</a>
+                <a href="/voirEcurie?TeamID=<?=$F1->TeamID ?>" class="btn btn-page">Voir l'écurie</a>
 
                 <?php if ($uri === "/myTeam") : ?>
                     <p><a href="deleteTeam?TeamID=<?=$F1->TeamID ?>" class="petitLiens lienModif">Supprimer l'écurie</a></p>
