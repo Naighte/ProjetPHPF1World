@@ -4,9 +4,9 @@ require_once "Models/F1Model.php";
 
 $uri = $_SERVER["REQUEST_URI"];
 
-if ($uri === "/myTeam"){
-    $F1 = selectMyF1($pdo);
-
+if ($uri === "/monEcurie"){
+    $F1s = selectMyF1($pdo);
+ 
     $title = "Mon écurie";
     $template = "Views/pageAccueil.php";
     require_once("Views/base.php");
@@ -17,7 +17,7 @@ elseif ($uri === "/createTeam"){
 
         $TeamID = $pdo->lastInsertId();
 
-        header("location:/myTeam");
+        header("location:/monEcurie");
     }
     $title = "Ajout d'une écurie";
     $template = "Views/F1/editOrCreateF1.php";
@@ -32,12 +32,12 @@ elseif (isset($_GET["TeamID"]) && $uri === "/voirEcurie?TeamID=" . $_GET["TeamID
     require_once("Views/base.php");
 }
 
-elseif (isset($_GET["TeamID"]) && $uri === "/updateEcurie?TeamID=" . $_GET["TeamID"]) {
+elseif (isset($_GET["CustomTeamID"]) && $uri === "/updateTeam?CustomTeamID=" . $_GET["CustomTeamID"]) {
 
     if (isset($_POST['btnEnvoi'])) {
         updateF1($pdo);
 
-        header("location=/myTeam");
+        header("location=/monEcurie");
     }
     $F1 = selectOneF1($pdo);
     $title = "Mise à jour de l'écurie";
@@ -47,5 +47,5 @@ elseif (isset($_GET["TeamID"]) && $uri === "/updateEcurie?TeamID=" . $_GET["Team
 
 elseif (isset($_GET["CustomTeamID"]) && $uri === "/deleteF1?CustomTeamID=" . $_GET["CustomTeamID"]) {
     deleteOneF1($pdo);
-    header("location:/myTeam");
+    header("location:/monEcurie");
 }

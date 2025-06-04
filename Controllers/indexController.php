@@ -7,7 +7,7 @@ require_once ("Models/F1Model.php");
 $uri = $_SERVER["REQUEST_URI"];
 
 if ($uri === "/index.php" || $uri === "/") {
-    $F1 = selectAllF1($pdo);
+    $F1s = selectAllF1($pdo);
     $title = "Page d'accueil";                  //titre à afficher dans l'onglet de la page du navigateur
     $template = "Views/pageAccueil.php";        //chemin vers la vue demandée
     require_once("Views/base.php");             //appel de la page de base qui sera remplie avec la vue demandée
